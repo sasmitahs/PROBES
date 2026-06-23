@@ -7,7 +7,7 @@ Each differentially private algorithm lives in its own module under `probes/`. E
 ## Repository layout
 
 ```
-probes-reproduction/
+PROBES/
 ├── probes/
 │   ├── bernstein.py       # Shared Bernstein basis utilities
 │   ├── ols.py             # Non-private OLS baseline
@@ -47,7 +47,8 @@ probes-reproduction/
 ## Setup
 
 ```bash
-cd probes-reproduction
+git clone https://github.com/sasmitahs/PROBES.git
+cd PROBES
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt

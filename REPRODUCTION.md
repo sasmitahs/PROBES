@@ -43,7 +43,8 @@ Use `VALIDATE_QUICK=1` for a ~10–30 minute smoke test.
 ### Software
 
 ```bash
-cd probes-reproduction
+git clone https://github.com/sasmitahs/PROBES.git
+cd PROBES
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
