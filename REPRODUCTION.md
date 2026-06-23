@@ -173,29 +173,3 @@ results/
 ├── covertype_ntrain.csv
 └── validation_all_tables.csv
 ```
-
-## 7. Reproduction checklist for reviewers
-
-- [ ] `pip install -r requirements.txt` succeeds
-- [ ] `VALIDATE_QUICK=1 python experiments/validate_all_tables.py` completes
-- [ ] California Housing: Ada-PROBES within ~15% of paper at ε=1, p≤4
-- [ ] Correlated ε=10: S-PROBES within ~5% of paper
-- [ ] Covertype n_train: methods within ~15% of paper
-- [ ] (Optional) Full grids with `--iters 100` overnight
-
-## 8. Known gaps vs paper
-
-1. **i.i.d. synthetic:** default runner uses test MSE (80/20 split); `--metric coef` reproduces author benchmark CSV.
-2. **DiffPrivLib / BinAgg** at low ε: heavy-tailed failures; compare medians or use ≥1000 iters for stable means.
-3. **S-PROBES at correlated ε=1, large p:** implementation verified bit-identical to author code; remaining gap is MC variance / seed sensitivity.
-
-## 9. Citation
-
-```bibtex
-@inproceedings{probes2026,
-  title={PROBES: A Bernstein Simplex Approach to Differentially Private OLS Estimation},
-  author={Hariini S, Sasmita and Tandon, Anshoo},
-  booktitle={Proceedings of the VLDB Endowment},
-  year={2026}
-}
-```
