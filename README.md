@@ -1,6 +1,6 @@
-# PROBES Reproduction
+# PROBES
 
-Reproduction code for **PROBES: A Bernstein Simplex Approach to Differentially Private OLS Estimation**.
+**PROBES: A Bernstein Simplex Approach to Differentially Private OLS Estimation**.
 
 Each differentially private algorithm lives in its own module under `probes/`. Experiment scripts under `experiments/` reproduce the synthetic and real-world tables from the paper.
 
