@@ -29,7 +29,7 @@ from experiments.paper_tables import (
 from experiments.realworld_common import realworld_run_config
 from experiments.run_synthetic_correlated import run_one as corr_run_one
 from experiments.run_synthetic_iid import run_one as iid_run_one
-from experiments.synthetic_common import synth_run_config
+from experiments.synthetic_common import synth_run_config_test_mse
 from probes.sprobes import build_sprobes_models
 from utils.datasets import load_dataset
 
@@ -110,13 +110,13 @@ def validate_iid(n_iters: int, tol: float, quick: bool) -> list[Row]:
     for p, mult in configs:
         n = mult * p
         eps = 1.0
-        got = synth_run_config(p, n, eps, n_iters=n_iters, base_seed=42)
+        got = synth_run_config_test_mse(p, n, eps, n_iters=n_iters, base_seed=42)
         cfg = f"p={p} n={n} eps={eps}"
         for method, paper_val in IID_SYN[(p, mult)].items():
             repo_val = got.get(method, float("nan"))
             err = _rel_err(paper_val, repo_val)
             status = _flag(paper_val, repo_val, tol)
-            note = "repo uses coef MSE (benchmark CSV); paper table is test MSE"
+            note = "80/20 test MSE, fresh data per seed"
             rows.append(Row(
                 "tab:synthetic_iid_combined", cfg, method, paper_val, repo_val, err, status, note,
             ))

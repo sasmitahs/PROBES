@@ -1,0 +1,30 @@
+\renewcommand{\arraystretch}{0.80}
+\begin{table*}[!htbp]
+\centering
+\caption{Test MSE on i.i.d.\ synthetic data at $\varepsilon = 1$; \textbf{Bold} = best private; \underline{underline} = second-best. Columns group results by training-set size $n \in \{2{,}000p,\,5{,}000p,\,10{,}000p\}$.}
+\label{tab:synthetic_iid_combined}
+\small
+\setlength{\tabcolsep}{2pt}
+\tableresize{%
+\begin{tabular}{@{}c *{5}{r} *{5}{r} *{5}{r} @{}}
+\toprule
+& \multicolumn{5}{c}{$2{,}000p$} & \multicolumn{5}{c}{$5{,}000p$} & \multicolumn{5}{c}{$10{,}000p$} \\
+\cmidrule(lr){2-6}\cmidrule(lr){7-11}\cmidrule(lr){12-16}
+$p$ & Ada-P & S-P & AdaSSP & DPL & BinAgg & Ada-P & S-P & AdaSSP & DPL & BinAgg & Ada-P & S-P & AdaSSP & DPL & BinAgg \\
+\midrule
+1 & $\mathbf{9.11{\times}10^{-4}}$ & {---} & $4.21{\times}10^{-3}$ & $\underline{1{\times}10^{-3}}$ & $1.96{\times}10^{-3}$ & $\mathbf{8.97{\times}10^{-4}}$ & {---} & $1.35{\times}10^{-3}$ & $\underline{9.13{\times}10^{-4}}$ & $1.28{\times}10^{-3}$ & $\mathbf{9.06{\times}10^{-4}}$ & {---} & $1.03{\times}10^{-3}$ & $\underline{9.1{\times}10^{-4}}$ & $1.08{\times}10^{-3}$ \\
+2 & $\mathbf{9.02{\times}10^{-4}}$ & {---} & $2.54{\times}10^{-3}$ & $\underline{1.02{\times}10^{-3}}$ & $1.84{\times}10^{-3}$ & $\mathbf{9.07{\times}10^{-4}}$ & {---} & $1.36{\times}10^{-3}$ & $\underline{9.22{\times}10^{-4}}$ & $1.19{\times}10^{-3}$ & $\mathbf{9{\times}10^{-4}}$ & {---} & $9.87{\times}10^{-4}$ & $\underline{9.04{\times}10^{-4}}$ & $1.02{\times}10^{-3}$ \\
+3 & $\mathbf{9.09{\times}10^{-4}}$ & {---} & $1.88{\times}10^{-3}$ & $\underline{1.07{\times}10^{-3}}$ & $1.84{\times}10^{-3}$ & $\mathbf{9.05{\times}10^{-4}}$ & {---} & $1.24{\times}10^{-3}$ & $\underline{9.25{\times}10^{-4}}$ & $1.17{\times}10^{-3}$ & $\mathbf{8.99{\times}10^{-4}}$ & {---} & $9.91{\times}10^{-4}$ & $\underline{9.05{\times}10^{-4}}$ & $9.99{\times}10^{-4}$ \\
+4 & $\mathbf{9.19{\times}10^{-4}}$ & {---} & $1.77{\times}10^{-3}$ & $\underline{1.12{\times}10^{-3}}$ & $1.59{\times}10^{-3}$ & $\mathbf{9{\times}10^{-4}}$ & {---} & $1.21{\times}10^{-3}$ & $\underline{9.3{\times}10^{-4}}$ & $1.22{\times}10^{-3}$ & $\mathbf{9.01{\times}10^{-4}}$ & {---} & $9.89{\times}10^{-4}$ & $\underline{9.1{\times}10^{-4}}$ & $1.05{\times}10^{-3}$ \\
+5 & $\mathbf{9.46{\times}10^{-4}}$ & {---} & $1.68{\times}10^{-3}$ & $\underline{1.25{\times}10^{-3}}$ & $1.89{\times}10^{-3}$ & $\mathbf{9.05{\times}10^{-4}}$ & {---} & $1.18{\times}10^{-3}$ & $\underline{9.57{\times}10^{-4}}$ & $1.21{\times}10^{-3}$ & $\mathbf{9.05{\times}10^{-4}}$ & {---} & $9.96{\times}10^{-4}$ & $\underline{9.18{\times}10^{-4}}$ & $1.04{\times}10^{-3}$ \\
+6 & $\mathbf{1{\times}10^{-3}}$ & $\underline{1.14{\times}10^{-3}}$ & $1.61{\times}10^{-3}$ & $1.33{\times}10^{-3}$ & $2.1{\times}10^{-3}$ & $\mathbf{9.21{\times}10^{-4}}$ & $\underline{9.39{\times}10^{-4}}$ & $1.13{\times}10^{-3}$ & $9.77{\times}10^{-4}$ & $1.18{\times}10^{-3}$ & $\mathbf{9.05{\times}10^{-4}}$ & $\underline{9.11{\times}10^{-4}}$ & $1{\times}10^{-3}$ & $9.18{\times}10^{-4}$ & $1.05{\times}10^{-3}$ \\
+8 & $\underline{1.51{\times}10^{-3}}$ & $\mathbf{1.43{\times}10^{-3}}$ & $1.55{\times}10^{-3}$ & $1.75{\times}10^{-3}$ & $4.53{\times}10^{-3}$ & $\underline{9.97{\times}10^{-4}}$ & $\mathbf{9.7{\times}10^{-4}}$ & $1.11{\times}10^{-3}$ & $1.01{\times}10^{-3}$ & $1.73{\times}10^{-3}$ & $\underline{9.29{\times}10^{-4}}$ & $\mathbf{9.23{\times}10^{-4}}$ & $1{\times}10^{-3}$ & $9.33{\times}10^{-4}$ & $1.09{\times}10^{-3}$ \\
+12 & {---} & $\underline{2.39{\times}10^{-3}}$ & $\mathbf{1.54{\times}10^{-3}}$ & $3.09{\times}10^{-3}$ & $1.44{\times}10^{-2}$ & {---} & $\mathbf{1.11{\times}10^{-3}}$ & $\underline{1.15{\times}10^{-3}}$ & $1.21{\times}10^{-3}$ & $7.19{\times}10^{-3}$ & {---} & $\mathbf{9.54{\times}10^{-4}}$ & $9.98{\times}10^{-4}$ & $\underline{9.81{\times}10^{-4}}$ & $3.57{\times}10^{-3}$ \\
+15 & {---} & $\underline{2.2{\times}10^{-3}}$ & $\mathbf{1.53{\times}10^{-3}}$ & $5.02{\times}10^{-3}$ & $1.92{\times}10^{-2}$ & {---} & $\mathbf{1.1{\times}10^{-3}}$ & $\underline{1.16{\times}10^{-3}}$ & $1.39{\times}10^{-3}$ & $1.17{\times}10^{-2}$ & {---} & $\mathbf{9.47{\times}10^{-4}}$ & $\underline{1.01{\times}10^{-3}}$ & $1.03{\times}10^{-3}$ & $6.08{\times}10^{-3}$ \\
+20 & {---} & $\underline{3.12{\times}10^{-3}}$ & $\mathbf{1.49{\times}10^{-3}}$ & $1.07{\times}10^{-2}$ & $2.16{\times}10^{-2}$ & {---} & $\underline{1.23{\times}10^{-3}}$ & $\mathbf{1.18{\times}10^{-3}}$ & $2.12{\times}10^{-3}$ & $1.21{\times}10^{-2}$ & {---} & $\mathbf{9.88{\times}10^{-4}}$ & $\underline{1.04{\times}10^{-3}}$ & $1.19{\times}10^{-3}$ & $8.84{\times}10^{-3}$ \\
+24 & {---} & $\underline{4.88{\times}10^{-3}}$ & $\mathbf{1.45{\times}10^{-3}}$ & $2.34{\times}10^{-2}$ & $2.11{\times}10^{-2}$ & {---} & $\underline{1.49{\times}10^{-3}}$ & $\mathbf{1.19{\times}10^{-3}}$ & $2.89{\times}10^{-3}$ & $1.31{\times}10^{-2}$ & {---} & $\mathbf{1.04{\times}10^{-3}}$ & $\underline{1.06{\times}10^{-3}}$ & $1.38{\times}10^{-3}$ & $9.27{\times}10^{-3}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+\renewcommand{\arraystretch}{1.0}

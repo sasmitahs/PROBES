@@ -9,7 +9,7 @@ This document describes how to reproduce the empirical results in
 |----------------------|--------|---------------------|
 | `tab:realworld_combined` | `experiments/run_realworld.py` | **Runnable** — all 6 datasets via `utils/datasets.py` |
 | `tab:covertype_ntrain` | `experiments/run_covertype_ntrain.py` | **Runnable** |
-| `tab:synthetic_iid_combined` | `experiments/run_synthetic_iid.py` | **Runnable** — matches author benchmark CSV (coef MSE); paper table uses test MSE |
+| `tab:synthetic_iid_combined` | `experiments/run_synthetic_iid.py` | **Runnable** — test MSE, 80/20 split, 100 seeds |
 | `tab:synthetic_corr` | `experiments/run_synthetic_correlated.py` | **Runnable** — test RMSE, 80/20 split, 100 seeds |
 | All tables (spot check) | `experiments/validate_all_tables.py` | Compares repo vs embedded paper values → `results/validation_all_tables.csv` |
 
@@ -109,22 +109,17 @@ Output: `results/covertype_ntrain.csv`.
 
 ### 4.3 i.i.d. synthetic (`tab:synthetic_iid_combined`)
 
-**Paper protocol:** Uniform X ∈ [0,1]^p, clipped linear y, 80/20 split, **test MSE**, ε=1.0, 100 seeds.
-
-**This repo's benchmark script** follows the authors' `sprobes_benchmark_p6_p8_p12.py`:
-
-- Fixed (X, y) per (p, n); only DP noise varies
-- Fit on all n points
-- Metric: **coefficient MSE** mean((β̂−β*)²)
+**Protocol:** Uniform X ∈ [0,1]^p, clipped linear y, **80/20 sequential split**, **test MSE** on held-out y, ε=1.0, 100 MC seeds (fresh data per seed).
 
 ```bash
-python experiments/run_synthetic_iid.py --iters 100 --eps 0.1 1.0
+python experiments/run_synthetic_iid.py --iters 100 --eps 1.0
+python experiments/generate_iid_latex_table.py
 VALIDATE_QUICK=1 python experiments/validate_all_tables.py
 ```
 
-Reference: `~/Downloads/results/probes_benchmark_p1_p5_eps_grid.csv` (or ship `data/reference/` in artifact).
+Legacy coefficient-MSE benchmark (author `sprobes_benchmark` CSV): add `--metric coef`.
 
-**Known alignment:** Ada-PROBES / S-PROBES / AdaSSP within ~5–15% of reference at ε=1; DiffPrivLib/BinAgg highly variable at low ε.
+**Known alignment:** Ada-PROBES / S-PROBES / AdaSSP within ~5–15% of paper table at ε=1; DiffPrivLib/BinAgg highly variable at low ε.
 
 ### 4.4 Correlated synthetic (`tab:synthetic_corr`)
 
@@ -190,7 +185,7 @@ results/
 
 ## 8. Known gaps vs paper
 
-1. **i.i.d. synthetic metric:** repo uses coefficient MSE (author benchmark); paper table reports test MSE.
+1. **i.i.d. synthetic:** default runner uses test MSE (80/20 split); `--metric coef` reproduces author benchmark CSV.
 2. **DiffPrivLib / BinAgg** at low ε: heavy-tailed failures; compare medians or use ≥1000 iters for stable means.
 3. **S-PROBES at correlated ε=1, large p:** implementation verified bit-identical to author code; remaining gap is MC variance / seed sensitivity.
 

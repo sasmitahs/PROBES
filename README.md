@@ -79,10 +79,11 @@ At large ε, private coefficients should match non-private OLS to numerical prec
 ### i.i.d. synthetic (Table `tab:synthetic_iid_combined`)
 
 ```bash
-python experiments/run_synthetic_iid.py --iters 100 --eps 0.1 1.0
+python experiments/run_synthetic_iid.py --iters 100 --eps 1.0
+python experiments/generate_iid_latex_table.py
 ```
 
-Grid: `p ∈ {1,…,24}`, `n ∈ {2000p, 5000p, 10000p}`. Fixed `(X, y)` per `(p, n)` config; MC iterations re-draw only DP noise. Fit on all `n` points and report **coefficient MSE** `mean((β̂ − β*)²)`. Methods: OLS / Ada-PROBES / S-PROBES / AdaSSP / DiffPrivLib / BinAgg.
+Grid: `p ∈ {1,…,24}`, `n ∈ {2000p, 5000p, 10000p}`. Fresh data per MC seed; sequential **80/20 train/test split**; fit on train and report **test MSE** on held-out `y`. Use `--metric coef` for the legacy coefficient-MSE benchmark (author CSV protocol).
 
 ### Correlated synthetic (Table `tab:synthetic_corr`)
 
