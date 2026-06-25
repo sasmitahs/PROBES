@@ -1,20 +1,9 @@
 #!/usr/bin/env python3
 """
-Reproduce i.i.d. synthetic benchmark (Table: tab:synthetic_iid_combined).
+Run i.i.d. synthetic benchmark.
 
-Default protocol (paper):
-  - Uniform X, clipped y; fresh data per MC seed
-  - Sequential 80/20 train/test split
-  - Fit on train; report test MSE on held-out y
-  - ε=1.0, 100 seeds
-
-Legacy protocol (--metric coef):
-  - Fixed (X, y) per (p, n); only DP noise varies
-  - Fit on all n points; coefficient MSE vs true beta
-
-Example:
-  python experiments/run_synthetic_iid.py --iters 100 --eps 1.0
-  python experiments/generate_iid_latex_table.py
+Default: uniform X, clipped y; 80/20 train/test split; test MSE on held-out y.
+Use --metric coef for coefficient MSE on the full training set.
 """
 
 from __future__ import annotations
@@ -78,7 +67,7 @@ def main() -> None:
         "--metric",
         choices=["test", "coef"],
         default="test",
-        help="test = 80/20 test MSE (paper); coef = coefficient MSE (author CSV)",
+        help="test = 80/20 test MSE; coef = coefficient MSE on full data",
     )
     parser.add_argument(
         "--base-seed", type=int, default=42,

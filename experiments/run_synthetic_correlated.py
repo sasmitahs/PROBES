@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 """
-Reproduce correlated synthetic benchmark (Table: tab:synthetic_corr).
+Run correlated synthetic benchmark.
 
-Protocol (paper Section 7.2):
-  - Correlated block: Z @ A.T with column min-max to [0,1]; rest i.i.d. Uniform[0,1]
-  - n = 10,000 × p; fresh data per MC seed
-  - Sequential 80/20 train/test split; fit on train; report test RMSE on held-out y
-  - DP noise seed: data_seed + 1
-
-Example:
-  python experiments/run_synthetic_correlated.py --iters 100 --eps 0.1 1.0 10.0
+Latent-factor block + i.i.d. block; n = 10,000 × p; 80/20 train/test split;
+test RMSE on held-out y.
 """
 
 from __future__ import annotations

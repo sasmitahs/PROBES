@@ -1,4 +1,4 @@
-"""Synthetic data generators matching the paper experiments."""
+"""Synthetic data generators for benchmark experiments."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ def split_train_test(
     train_frac: float = TRAIN_FRAC,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
-    Sequential 80/20 train/test split (paper synthetic protocol).
+    Sequential 80/20 train/test split.
 
     Matches ``exp_linear_d1.py``: first ``train_frac`` of rows for training,
     remainder held out for test MSE on ``y``.
@@ -54,7 +54,7 @@ def generate_iid_linear_split(
     noise_sd: float = 0.03,
     seed: int = 0,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """Generate i.i.d. data and apply the paper's sequential train/test split."""
+    """Generate i.i.d. data with a sequential 80/20 train/test split."""
     X, y, _ = generate_iid_linear(n, p, intercept=intercept, noise_sd=noise_sd, seed=seed)
     return split_train_test(X, y, train_frac=train_frac)
 
@@ -67,7 +67,7 @@ def generate_correlated_linear(
     seed: int = 0,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
-    Correlated block + i.i.d. block features (paper Section 7.2).
+    Correlated block + i.i.d. block features.
     """
     rng = np.random.RandomState(seed)
     n_corr = p // 2

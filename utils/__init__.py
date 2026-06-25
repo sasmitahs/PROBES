@@ -1,1 +1,1 @@
-"""Shared utilities for PROBES reproduction experiments."""
+"""Shared utilities for PROBES experiments."""

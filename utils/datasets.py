@@ -136,7 +136,7 @@ DATASET_LOADERS: Dict[str, Callable[..., Tuple[np.ndarray, np.ndarray, List[str]
     "Covertype": load_covertype,
 }
 
-PAPER_REALWORLD_DATASETS = list(DATASET_LOADERS.keys())
+REALWORLD_DATASETS = list(DATASET_LOADERS.keys())
 
 
 def load_dataset(name: str, **kwargs) -> Tuple[np.ndarray, np.ndarray, List[str]]:

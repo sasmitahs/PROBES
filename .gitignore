@@ -7,7 +7,6 @@ venv/
 .DS_Store
 results/*
 !results/.gitkeep
-!results/synthetic_iid_summary.csv
 data/*
 !data/.gitkeep
 *.parquet

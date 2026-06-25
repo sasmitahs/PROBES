@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Reproduce real-world benchmarks (unit-cube protocol, 80/20 split, 100 MC seeds).
+Run real-world benchmarks (unit-cube protocol, 80/20 split).
 
-Supports all paper datasets: California, NYC-Taxi, Appliances, Superconductivity,
-YearMSD, Covertype. Set PROBES_* env vars for local CSV paths (see README.md).
+Supports California, NYC-Taxi, Appliances, Superconductivity, YearMSD, and
+Covertype. Set PROBES_* env vars for local CSV paths (see utils/datasets.py).
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ if ROOT not in sys.path:
 from experiments.realworld_common import evaluate_config
 from probes.sprobes import build_sprobes_models
 from utils.datasets import (
-    PAPER_REALWORLD_DATASETS,
+    REALWORLD_DATASETS,
     load_dataset,
     p_values_for_dataset,
 )
@@ -36,7 +36,7 @@ def main() -> None:
         "--dataset",
         nargs="+",
         default=["California"],
-        help=f"Dataset name(s) or 'all'. Choices: {PAPER_REALWORLD_DATASETS}",
+        help=f"Dataset name(s) or 'all'. Choices: {REALWORLD_DATASETS}",
     )
     parser.add_argument("--iters", type=int, default=100)
     parser.add_argument("--eps", type=float, nargs="+", default=DEFAULT_EPS)
@@ -49,7 +49,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if len(args.dataset) == 1 and args.dataset[0].lower() == "all":
-        datasets = PAPER_REALWORLD_DATASETS
+        datasets = REALWORLD_DATASETS
     else:
         datasets = args.dataset
 

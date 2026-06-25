@@ -162,7 +162,7 @@ def synth_run_config_test_mse(
     n_iters: int = 100,
     base_seed: int = 42,
 ) -> dict[str, float]:
-    """Test MSE with 80/20 split and fresh data per MC seed (paper protocol)."""
+    """Test MSE with 80/20 split and fresh data per MC seed."""
     sprobes = build_sprobes_models()
     mult = n // p if p > 0 else n
     store: dict[str, list[float]] = {m: [] for m in METHODS}
